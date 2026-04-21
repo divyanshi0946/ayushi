@@ -76,10 +76,10 @@ export default function App() {
                 transition={{ duration: 0.3, ease: "easeOut" }}
               >
                 {activeTab === 'dashboard' && <Dashboard user={MOCK_USER} missions={missions} />}
-                {activeTab === 'missions' && <MissionsPage missions={missions} />}
+                {activeTab === 'missions' && <MissionsPage missions={missions} setActiveTab={setActiveTab} />}
                 {activeTab === 'battles' && <BattlesPage />}
-                {activeTab === 'futureself' && <FutureSelf user={MOCK_USER} />}
-                {activeTab === 'aicounselor' && <AICoach userSkills={MOCK_USER.skills} />}
+                {activeTab === 'futureself' && <FutureSelf user={MOCK_USER} setActiveTab={setActiveTab} />}
+                {activeTab === 'roadmaps' && <AICoach userSkills={MOCK_USER.skills} />}
                 {activeTab === 'leaderboard' && <LeaderboardPage />}
               </motion.div>
             </AnimatePresence>

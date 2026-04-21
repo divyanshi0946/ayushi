@@ -9,9 +9,10 @@ import { motion, AnimatePresence } from "motion/react";
 
 interface MissionsPageProps {
   missions: Mission[];
+  setActiveTab: (tab: string) => void;
 }
 
-export function MissionsPage({ missions }: MissionsPageProps) {
+export function MissionsPage({ missions, setActiveTab }: MissionsPageProps) {
   const [filter, setFilter] = useState("all");
   const [search, setSearch] = useState("");
 
@@ -159,7 +160,10 @@ export function MissionsPage({ missions }: MissionsPageProps) {
                </div>
                <h2 className="text-3xl md:text-5xl font-heading font-black text-white mb-6 leading-tight">Can't find a <br />skill roadmap?</h2>
                <p className="text-lg text-slate-400 mb-8 leading-relaxed italic">"Our AI Skill Coach can generate a personalized 14-day mission sprint based on your career goals."</p>
-               <Button className="h-14 px-10 rounded-2xl bg-cyan-500 hover:bg-cyan-600 text-slate-950 font-black text-lg transition-all hover:shadow-[0_0_30px_rgba(34,211,238,0.3)]">
+               <Button 
+                onClick={() => setActiveTab('roadmaps')}
+                className="h-14 px-10 rounded-2xl bg-cyan-500 hover:bg-cyan-600 text-slate-950 font-black text-lg transition-all hover:shadow-[0_0_30px_rgba(34,211,238,0.3)]"
+               >
                   Talk to AI Coach
                </Button>
             </div>

@@ -28,17 +28,32 @@ async function startServer() {
   });
 
   // Vite middleware for development
-  if (process.env.NODE_ENV !== 'production') {
-    const vite = await createViteServer({
-      server: { middlewareMode: true },
-      appType: 'spa',
-    });
-    app.use(vite.middlewares);
+  const isProduction = process.env.NODE_ENV === 'production' || process.env.VITE_USER_NODE_ENV === 'production';
+  
+  console.log(`Current NODE_ENV: ${process.env.NODE_ENV}`);
+  console.log(`Current isProduction: ${isProduction}`);
+  
+  if (!isProduction) {
+    console.log('Starting in DEVELOPMENT mode');
+    try {
+      const vite = await createViteServer({
+        server: { middlewareMode: true },
+        appType: 'spa',
+      });
+      app.use(vite.middlewares);
+    } catch (e) {
+      console.error('Vite failed to start:', e);
+      // Fallback to static in case Vite fails in a environment that looks like dev
+      const distPath = path.resolve(__dirname, 'dist');
+      app.use(express.static(distPath));
+    }
   } else {
-    const distPath = path.join(process.cwd(), 'dist');
+    console.log('Starting in PRODUCTION mode');
+    const distPath = path.resolve(__dirname, 'dist');
+    console.log(`Serving static files from: ${distPath}`);
     app.use(express.static(distPath));
     app.get('*', (req, res) => {
-      res.sendFile(path.join(distPath, 'index.html'));
+      res.sendFile(path.resolve(distPath, 'index.html'));
     });
   }
 

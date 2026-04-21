@@ -77,8 +77,8 @@ export function AICoach({ userSkills }: { userSkills: any }) {
     >
       <header className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
-          <h1 className="text-3xl font-heading font-black text-white italic tracking-tight">AI Skill Coach</h1>
-          <p className="text-slate-400 text-sm italic">Hyper-personalized roadmaps powered by Gemini AI.</p>
+          <h1 className="text-3xl font-heading font-black text-white italic tracking-tight">AI Roadmap Coach</h1>
+          <p className="text-slate-400 text-sm italic">Hyper-personalized skill paths powered by Gemini AI.</p>
         </div>
         <div className="flex gap-2">
            <Badge className="bg-cyan-500/10 text-cyan-400 border-cyan-500/20 font-black uppercase tracking-widest text-[9px]">FLASH MODE</Badge>

@@ -9,6 +9,7 @@ import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 
 interface FutureSelfProps {
   user: User;
+  setActiveTab: (tab: string) => void;
 }
 
 const projectionData = [
@@ -20,7 +21,7 @@ const projectionData = [
   { day: 'Day 60', current: 14500, projected: 85000 },
 ];
 
-export function FutureSelf({ user }: FutureSelfProps) {
+export function FutureSelf({ user, setActiveTab }: FutureSelfProps) {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { 
@@ -52,7 +53,10 @@ export function FutureSelf({ user }: FutureSelfProps) {
         </motion.div>
         
         <motion.div variants={itemVariants} className="flex gap-3">
-          <Button className="rounded-2xl h-12 px-6 bg-blue-600 hover:bg-blue-700 shadow-xl shadow-blue-500/20 font-bold">
+          <Button 
+            onClick={() => setActiveTab('roadmaps')}
+            className="rounded-2xl h-12 px-6 bg-blue-600 hover:bg-blue-700 shadow-xl shadow-blue-500/20 font-bold"
+          >
             Simulate Roadmap
           </Button>
         </motion.div>

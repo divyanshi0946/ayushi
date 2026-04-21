@@ -14,7 +14,7 @@ export function Navigation({ user, activeTab, setActiveTab }: NavigationProps) {
     { id: 'missions', label: 'Missions', icon: Target },
     { id: 'futureself', label: 'Future Self', icon: Sparkles },
     { id: 'battles', label: 'Battles', icon: Sword },
-    { id: 'aicounselor', label: 'AI Coach', icon: Brain },
+    { id: 'roadmaps', label: 'Roadmap', icon: Brain },
     { id: 'leaderboard', label: 'Ranks', icon: Trophy },
   ];
 
